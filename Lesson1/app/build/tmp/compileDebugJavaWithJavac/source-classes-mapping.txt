@@ -1,0 +1,7 @@
+com/artem/lesson1/BuildConfig.java
+ com.artem.lesson1.BuildConfig
+com/artem/lesson1/SecondActivity.java
+ com.artem.lesson1.SecondActivity
+com/artem/lesson1/MainActivity.java
+ com.artem.lesson1.MainActivity
+ com.artem.lesson1.MainActivity$1
