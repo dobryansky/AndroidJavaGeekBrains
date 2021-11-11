@@ -82,7 +82,7 @@
         style="@style/Button"
         android:text="@string/text_nine"
 
-        app:layout_constraintBottom_toTopOf="@+id/button11"
+        app:layout_constraintBottom_toTopOf="@+id/button_six"
         app:layout_constraintEnd_toStartOf="@+id/btn_multiply"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn_eight"
@@ -103,7 +103,7 @@
         style="@style/Button"
         android:text="@string/text_five"
         app:layout_constraintBottom_toTopOf="@+id/btn_two"
-        app:layout_constraintEnd_toStartOf="@+id/button11"
+        app:layout_constraintEnd_toStartOf="@+id/button_six"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn_four"
         app:layout_constraintTop_toBottomOf="@+id/btn_eight" />
@@ -125,11 +125,11 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_plus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button11"
+        app:layout_constraintStart_toEndOf="@+id/button_six"
         app:layout_constraintTop_toBottomOf="@+id/btn_multiply" />
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/button_six"
         style="@style/Button"
         android:text="@string/text_six"
         app:layout_constraintBottom_toTopOf="@+id/btn_three"
@@ -176,7 +176,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_plus"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btn_two"
-        app:layout_constraintTop_toBottomOf="@+id/button11" />
+        app:layout_constraintTop_toBottomOf="@+id/button_six" />
 
     <Button
         android:id="@+id/btn_dot"
@@ -220,10 +220,12 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.9" />
 
+
     <TextView
-        android:id="@+id/txt_operations"
+        android:id="@+id/txt_display"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="60dp"
         android:background="#CC7E5BA8"
         android:gravity="right"
         android:text="@string/text_operations"
@@ -233,5 +235,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
