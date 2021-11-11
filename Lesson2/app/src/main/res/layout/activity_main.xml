@@ -19,7 +19,6 @@
     <Button
         android:id="@+id/btn_clear"
         style="@style/Button"
-
         android:backgroundTint="@color/yellow"
         android:text="@string/text_c"
         app:layout_constraintBottom_toTopOf="@+id/btn_seven"
@@ -31,7 +30,6 @@
     <Button
         android:id="@+id/btn_sqr"
         style="@style/Button"
-
         android:text="@string/text_sqr"
         app:layout_constraintBottom_toTopOf="@+id/btn_eight"
         app:layout_constraintEnd_toStartOf="@+id/btn_percent"
@@ -42,7 +40,6 @@
     <Button
         android:id="@+id/btn_percent"
         style="@style/Button"
-
         android:text="@string/text_percent"
         app:layout_constraintBottom_toTopOf="@+id/btn_nine"
         app:layout_constraintEnd_toStartOf="@+id/btn_divide"
@@ -53,9 +50,7 @@
     <Button
         android:id="@+id/btn_divide"
         style="@style/ButtonNoMargin"
-
         android:text="@string/tetx_divide"
-
         app:layout_constraintBottom_toTopOf="@+id/btn_multiply"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -65,7 +60,6 @@
     <Button
         android:id="@+id/btn_multiply"
         style="@style/ButtonNoMargin"
-
         android:text="@string/text_multiply"
         app:layout_constraintBottom_toTopOf="@+id/btn_minus"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +70,6 @@
     <Button
         android:id="@+id/btn_seven"
         style="@style/Button"
-
         android:text="@string/text_seven"
         app:layout_constraintBottom_toTopOf="@+id/btn_four"
         app:layout_constraintEnd_toStartOf="@+id/btn_eight"
@@ -87,7 +80,6 @@
     <Button
         android:id="@+id/btn_nine"
         style="@style/Button"
-
         android:text="@string/text_nine"
 
         app:layout_constraintBottom_toTopOf="@+id/button11"
@@ -99,8 +91,6 @@
     <Button
         android:id="@+id/btn_eight"
         style="@style/Button"
-
-
         android:text="@string/text_eight"
         app:layout_constraintBottom_toTopOf="@+id/btn_five"
         app:layout_constraintEnd_toStartOf="@+id/btn_nine"
@@ -111,7 +101,6 @@
     <Button
         android:id="@+id/btn_five"
         style="@style/Button"
-
         android:text="@string/text_five"
         app:layout_constraintBottom_toTopOf="@+id/btn_two"
         app:layout_constraintEnd_toStartOf="@+id/button11"
@@ -122,7 +111,6 @@
     <Button
         android:id="@+id/btn_four"
         style="@style/Button"
-
         android:text="@string/text_four"
         app:layout_constraintBottom_toTopOf="@+id/btn_one"
         app:layout_constraintEnd_toStartOf="@+id/btn_five"
@@ -133,7 +121,6 @@
     <Button
         android:id="@+id/btn_minus"
         style="@style/ButtonNoMargin"
-
         android:text="@string/text_minus"
         app:layout_constraintBottom_toTopOf="@+id/btn_plus"
         app:layout_constraintEnd_toEndOf="parent"
@@ -144,7 +131,6 @@
     <Button
         android:id="@+id/button11"
         style="@style/Button"
-
         android:text="@string/text_six"
         app:layout_constraintBottom_toTopOf="@+id/btn_three"
         app:layout_constraintEnd_toStartOf="@+id/btn_minus"
@@ -155,7 +141,6 @@
     <Button
         android:id="@+id/btn_two"
         style="@style/Button"
-
         android:text="@string/text_two"
         app:layout_constraintBottom_toTopOf="@+id/btn_null"
         app:layout_constraintEnd_toStartOf="@+id/btn_three"
@@ -166,7 +151,6 @@
     <Button
         android:id="@+id/btn_one"
         style="@style/Button"
-
         android:text="@string/text_one"
         app:layout_constraintBottom_toTopOf="@+id/btn_dot"
         app:layout_constraintEnd_toStartOf="@+id/btn_two"
@@ -177,7 +161,6 @@
     <Button
         android:id="@+id/btn_plus"
         style="@style/ButtonNoMargin"
-
         android:text="@string/text_plus"
         app:layout_constraintBottom_toTopOf="@+id/btn_equal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -188,7 +171,6 @@
     <Button
         android:id="@+id/btn_three"
         style="@style/Button"
-
         android:text="@string/text_three"
         app:layout_constraintBottom_toTopOf="@+id/btn_equal"
         app:layout_constraintEnd_toStartOf="@+id/btn_plus"
@@ -199,7 +181,6 @@
     <Button
         android:id="@+id/btn_dot"
         style="@style/Button"
-
         android:text="@string/text_dot"
         app:layout_constraintBottom_toBottomOf="@id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/btn_null"
@@ -224,7 +205,6 @@
     <Button
         android:id="@+id/btn_null"
         style="@style/Button"
-
         android:text="@string/text_null"
         app:layout_constraintBottom_toBottomOf="@id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/btn_equal"
