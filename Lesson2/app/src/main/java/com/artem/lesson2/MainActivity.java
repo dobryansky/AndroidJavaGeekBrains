@@ -1,5 +1,6 @@
 package com.artem.lesson2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -14,9 +15,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             button_six, btn_two, btn_one, btn_plus, btn_three, btn_dot, btn_equal, btn_null;
 
     private TextView display;
-   StringBuilder out1 = new StringBuilder();
-    StringBuilder out2 = new StringBuilder();
-
+    StringBuilder num1 = new StringBuilder();
+    StringBuilder num2 = new StringBuilder();
+    String out = "";
     Boolean switchNum = true;
     String operand = "";
 
@@ -27,8 +28,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initViews();
         initListeners();
+        if(savedInstanceState!=null){
+           out = savedInstanceState.getString("out");
+           display.setText(out);
+        }
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("out",out);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        display.setText(savedInstanceState.getString("out"));
+    }
 
     private void initViews() {
         btn_clear = findViewById(R.id.btn_clear);
@@ -82,72 +99,80 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.btn_one:
                 if (switchNum) {
-                    out1 = out1.append(1);
+                    num1 = num1.append(1);
                 } else {
-                    out2=out2.append(1);
+                    num2 = num2.append(1);
                 }
                 break;
             case R.id.btn_two:
                 if (switchNum) {
-                    out1 = out1.append(2);
+                    num1 = num1.append(2);
                 } else {
-                    out2=out2.append(2);
+                    num2 = num2.append(2);
                 }
                 break;
             case R.id.btn_three:
                 if (switchNum) {
-                    out1 = out1.append(3);
+                    num1 = num1.append(3);
                 } else {
-                    out2=out2.append(3);
+                    num2 = num2.append(3);
                 }
                 break;
             case R.id.btn_four:
                 if (switchNum) {
-                    out1 = out1.append(4);
+                    num1 = num1.append(4);
                 } else {
-                    out2=out2.append(4);
+                    num2 = num2.append(4);
                 }
                 break;
             case R.id.btn_five:
                 if (switchNum) {
-                    out1 = out1.append(5);
+                    num1 = num1.append(5);
                 } else {
-                    out2=out2.append(5);
+                    num2 = num2.append(5);
                 }
                 break;
             case R.id.button_six:
                 if (switchNum) {
-                    out1 = out1.append(6);
+                    num1 = num1.append(6);
                 } else {
-                    out2=out2.append(6);
+                    num2 = num2.append(6);
                 }
                 break;
             case R.id.btn_seven:
                 if (switchNum) {
-                    out1 = out1.append(7);
+                    num1 = num1.append(7);
                 } else {
-                    out2=out2.append(7);
+                    num2 = num2.append(7);
                 }
                 break;
             case R.id.btn_eight:
                 if (switchNum) {
-                    out1 = out1.append(8);
+                    num1 = num1.append(8);
                 } else {
-                    out2=out2.append(8);
+                    num2 = num2.append(8);
                 }
                 break;
             case R.id.btn_nine:
                 if (switchNum) {
-                    out1 = out1.append(9);
+                    num1 = num1.append(9);
                 } else {
-                    out2=out2.append(9);
+                    num2 = num2.append(9);
                 }
                 break;
             case R.id.btn_null:
                 if (switchNum) {
-                    out1 = out1.append(0);
+                    num1 = num1.append(0);
                 } else {
-                    out2=out2.append(0);
+                    num2 = num2.append(0);
+                }
+                break;
+
+            case R.id.btn_dot:
+                if (switchNum) {
+                    num1 = num1.append(".");
+                } else {
+                    num2 = num2.append(".");
                 }
                 break;
 
@@ -163,19 +188,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 switchNum=false;
                 operand="-";
                 break;
+            case R.id.btn_multiply:
+                switchNum=false;
+                operand="x";
+                break;
             case R.id.btn_clear:
-                out1.setLength(0);
-                out2.setLength(0);
+                num1.setLength(0);
+                num2.setLength(0);
                 operand="";
                 switchNum=true;
+                break;
+            case R.id.btn_sqr:
+                num1.insert(0,"√",0,1);
+                operand="";
+                switchNum=false;
                 break;
             default:
 
                 break;
 
         }
-        display.setText(out1.toString()+operand+out2.toString());
-
+        out=num1.toString()+operand+ num2.toString();
+        display.setText(out);
     }
 
 
