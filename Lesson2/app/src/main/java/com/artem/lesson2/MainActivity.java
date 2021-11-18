@@ -14,7 +14,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             btn_seven, btn_nine, btn_eight, btn_five, btn_four, btn_minus,
             button_six, btn_two, btn_one, btn_plus, btn_three, btn_dot, btn_equal, btn_null;
 
+    private Button btn_switch_theme;
+
     private TextView display;
+    int switch_theme=  0;
     StringBuilder num1 = new StringBuilder();
     StringBuilder num2 = new StringBuilder();
     String out = "";
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        checkTheme (savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
         initListeners();
@@ -34,10 +38,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    private void checkTheme(Bundle savedInstanceState) {
+        if(savedInstanceState !=null) {
+            if (savedInstanceState.getInt("Theme") == 1) {
+                setTheme(R.style.Theme_pink);
+                switch_theme=  1;
+            }
+            else{
+                setTheme(R.style.Theme_Lesson2);
+                switch_theme=  0;
+            }
+        }
+    }
+
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString("out",out);
+        outState.putInt("Theme",switch_theme);
     }
 
     @Override
@@ -68,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_equal = findViewById(R.id.btn_equal);
         btn_null = findViewById(R.id.btn_null);
         display=findViewById(R.id.txt_display);
+        btn_switch_theme=findViewById(R.id.btn_theme);
         display.setText("");
     }
 
@@ -91,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_dot.setOnClickListener(this);
         btn_equal.setOnClickListener(this);
         btn_null.setOnClickListener(this);
+        btn_switch_theme.setOnClickListener(this);
     }
 
     @Override
@@ -202,6 +222,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 num1.insert(0,"√",0,1);
                 operand="";
                 switchNum=false;
+                break;
+            case R.id.btn_theme:
+                if(switch_theme==0){
+                switch_theme=1;
+                } else {
+                    switch_theme=0;
+                }
+                recreate();
                 break;
             default:
 
