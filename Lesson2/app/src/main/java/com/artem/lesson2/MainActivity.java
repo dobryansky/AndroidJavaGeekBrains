@@ -2,6 +2,7 @@ package com.artem.lesson2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.view.View;
@@ -13,16 +14,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn_clear, btn_sqr, btn_percent, btn_divide, btn_multiply,
             btn_seven, btn_nine, btn_eight, btn_five, btn_four, btn_minus,
             button_six, btn_two, btn_one, btn_plus, btn_three, btn_dot, btn_equal, btn_null;
-
     private Button btn_switch_theme;
-
+    private ConstraintLayout layout;
     private TextView display;
-    int switch_theme=  0;
+    int switch_theme = 0;
     StringBuilder num1 = new StringBuilder();
     StringBuilder num2 = new StringBuilder();
     String out = "";
-    double outEqual  = 0;
-    Boolean isEqualPress= false;
+    double outEqual = 0;
+    Boolean isEqualPress = false;
     Boolean switchNum = true;
     String operand = "";
 
@@ -30,25 +30,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        checkTheme (savedInstanceState);
+        checkTheme(savedInstanceState);
         setContentView(R.layout.activity_main);
         initViews();
         initListeners();
-        if(savedInstanceState!=null){
-           out = savedInstanceState.getString("out");
-           display.setText(out);
+        if (savedInstanceState != null) {
+            out = savedInstanceState.getString("out");
+            display.setText(out);
+        }
+        checkBackgroun();
+    }
+
+    private void checkBackgroun() {
+        if (switch_theme == 1) {
+            layout.setBackgroundResource(R.drawable.background_pink);
+
+        } else {
+            layout.setBackgroundResource(R.drawable.back_light);
         }
     }
 
     private void checkTheme(Bundle savedInstanceState) {
-        if(savedInstanceState !=null) {
+        if (savedInstanceState != null) {
             if (savedInstanceState.getInt("Theme") == 1) {
                 setTheme(R.style.Theme_pink);
-                switch_theme=  1;
-            }
-            else{
+                switch_theme = 1;
+            } else {
                 setTheme(R.style.Theme_Lesson2);
-                switch_theme=  0;
+                switch_theme = 0;
             }
         }
     }
@@ -56,8 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("out",out);
-        outState.putInt("Theme",switch_theme);
+        outState.putString("out", out);
+        outState.putInt("Theme", switch_theme);
     }
 
     @Override
@@ -87,8 +96,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_dot = findViewById(R.id.btn_dot);
         btn_equal = findViewById(R.id.btn_equal);
         btn_null = findViewById(R.id.btn_null);
-        display=findViewById(R.id.txt_display);
-        btn_switch_theme=findViewById(R.id.btn_theme);
+        display = findViewById(R.id.txt_display);
+        btn_switch_theme = findViewById(R.id.btn_theme);
+        layout = (ConstraintLayout) findViewById(R.id.layout);
         display.setText("");
     }
 
@@ -199,64 +209,74 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.btn_divide:
-               switchNum=false;
-               operand="/";
+                switchNum = false;
+                operand = "/";
                 break;
             case R.id.btn_plus:
-                switchNum=false;
-                operand="+";
+                switchNum = false;
+                operand = "+";
                 break;
             case R.id.btn_minus:
-                switchNum=false;
-                operand="-";
+                switchNum = false;
+                operand = "-";
                 break;
             case R.id.btn_multiply:
-                switchNum=false;
-                operand="x";
+                switchNum = false;
+                operand = "x";
                 break;
             case R.id.btn_clear:
                 num1.setLength(0);
                 num2.setLength(0);
-                operand="";
-                switchNum=true;
+                operand = "";
+                outEqual = 0;
+                isEqualPress = false;
+                switchNum = true;
                 break;
             case R.id.btn_sqr:
-                num1.insert(0,"√",0,1);
-                operand="";
-                switchNum=false;
+                num1.insert(0, "√", 0, 1);
+                operand = "";
+                switchNum = false;
                 break;
             case R.id.btn_theme:
-                if(switch_theme==0){
-                switch_theme=1;
+                if (switch_theme == 0) {
+                    switch_theme = 1;
+                    layout.setBackgroundResource(R.drawable.background_pink);
                 } else {
-                    switch_theme=0;
+                    switch_theme = 0;
+                    layout.setBackgroundResource(R.drawable.back_light);
                 }
                 recreate();
                 break;
 
             case R.id.btn_equal:
-                Calculator calculator= new Calculator(num1.toString(),num2.toString(),operand);
-                if(calculator.getOperation().equals("x") ){
-
+                Calculator calculator = new Calculator(num1.toString(), num2.toString(), operand);
+                if (calculator.getOperation().equals("x")) {
+                    outEqual = calculator.mult();
+                    isEqualPress = true;
                 }
-                if(calculator.getOperation().equals("+") ){
-                    outEqual= calculator.sum();
-                    isEqualPress =true;
+                if (calculator.getOperation().equals("+")) {
+                    outEqual = calculator.sum();
+                    isEqualPress = true;
                 }
-                if(calculator.getOperation().equals("-") ){
-
+                if (calculator.getOperation().equals("-")) {
+                    outEqual = calculator.sub();
+                    isEqualPress = true;
                 }
-                switchNum=false;
+                if (calculator.getOperation().equals("/")) {
+                    outEqual = calculator.div();
+                    isEqualPress = true;
+                }
+                switchNum = false;
                 break;
             default:
 
                 break;
 
         }
-        out=num1.toString()+operand+ num2.toString();
+        out = num1.toString() + operand + num2.toString();
 
         display.setText(out);
-        if(isEqualPress){
+        if (isEqualPress) {
             display.setText(String.valueOf(outEqual));
         }
     }

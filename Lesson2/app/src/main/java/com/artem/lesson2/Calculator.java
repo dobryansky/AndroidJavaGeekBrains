@@ -5,6 +5,12 @@ public class Calculator {
     String input2;
     String operation;
 
+    public Calculator(String input1, String input2, String operation) {
+        this.input1 = input1;
+        this.input2 = input2;
+        this.operation = operation;
+    }
+
     public String getInput1() {
         return input1;
     }
@@ -29,32 +35,26 @@ public class Calculator {
         this.operation = operation;
     }
 
-    public Calculator(String input1, String input2, String operation) {
-        this.input1 = input1;
-        this.input2 = input2;
-        this.operation = operation;
-    }
-
-     double sum(){
-        return Double.parseDouble(input1)+Double.parseDouble(input2);
+    double sum() {
+        return Double.parseDouble(input1) + Double.parseDouble(input2);
 
     }
 
-     double sub(){
-        return Double.parseDouble(input1)-Double.parseDouble(input2);
+    double sub() {
+        return Double.parseDouble(input1) - Double.parseDouble(input2);
     }
 
-
-     double div(){
-            return Double.parseDouble(input1) / Double.parseDouble(input2);
-
-    }
-
-    double mult(){
+    double div() {
         return Double.parseDouble(input1) / Double.parseDouble(input2);
 
     }
-    private double percent(){
+
+    double mult() {
+        return Double.parseDouble(input1) * Double.parseDouble(input2);
+
+    }
+
+    private double percent() {
         return Double.parseDouble(input1) / Double.parseDouble(input2);
 
     }

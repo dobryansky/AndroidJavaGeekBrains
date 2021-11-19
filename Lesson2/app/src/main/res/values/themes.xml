@@ -32,8 +32,9 @@
 <style name="Theme_pink" parent="Theme.MaterialComponents.DayNight">
     <item name="colorPrimary">#d81b60</item>
 
-    <item name="colorPrimaryVariant">#092EEE</item>
+    <item name="colorPrimaryVariant">#EE0992</item>
     <item name="colorOnPrimary">@color/white</item>
+    <item name="colorPrimaryDark">#EE0992</item>
     <!-- Secondary brand color. -->
     <item name="colorSecondary">#d81b60</item>
     <item name="colorSecondaryVariant">#B3FF5C8D</item>
