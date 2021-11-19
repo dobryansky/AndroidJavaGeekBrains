@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     StringBuilder num1 = new StringBuilder();
     StringBuilder num2 = new StringBuilder();
     String out = "";
+    double outEqual  = 0;
+    Boolean isEqualPress= false;
     Boolean switchNum = true;
     String operand = "";
 
@@ -231,13 +233,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 recreate();
                 break;
+
+            case R.id.btn_equal:
+                Calculator calculator= new Calculator(num1.toString(),num2.toString(),operand);
+                if(calculator.getOperation().equals("x") ){
+
+                }
+                if(calculator.getOperation().equals("+") ){
+                    outEqual= calculator.sum();
+                    isEqualPress =true;
+                }
+                if(calculator.getOperation().equals("-") ){
+
+                }
+                switchNum=false;
+                break;
             default:
 
                 break;
 
         }
         out=num1.toString()+operand+ num2.toString();
+
         display.setText(out);
+        if(isEqualPress){
+            display.setText(String.valueOf(outEqual));
+        }
     }
 
 
