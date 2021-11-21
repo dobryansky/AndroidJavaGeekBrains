@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Lesson6</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="notes">
+        <item>помыть посуду</item>
+        <item>купить помидоры</item>
+        <item>купить картофель</item>
+        <item>выкинуть мусор</item>
+        <item>починить машину</item>
+    </string-array>
+
+
+    <string-array name="details">
+        <item>помыsdgaaть посуду</item>
+        <item>купить помdfsgdfgидоры</item>
+        <item>купить кdfgadfgартофель</item>
+        <item>выкинуargewrgaewть мусор</item>
+        <item>починитagagь машину</item>
+    </string-array>
+
+</resources>
