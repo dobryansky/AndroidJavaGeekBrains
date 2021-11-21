@@ -1,9 +1,11 @@
 package com.artem.lesson2;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn_clear, btn_sqr, btn_percent, btn_divide, btn_multiply,
             btn_seven, btn_nine, btn_eight, btn_five, btn_four, btn_minus,
             button_six, btn_two, btn_one, btn_plus, btn_three, btn_dot, btn_equal, btn_null;
-    private Button btn_switch_theme;
+    private Button preferences;
     private ConstraintLayout layout;
     private TextView display;
     int switch_theme = 0;
@@ -56,9 +58,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void checkTheme(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
-            if (savedInstanceState.getInt("Theme") == 1) {
+            if (savedInstanceState.getInt("theme") == 1) {
                 setTheme(R.style.Theme_pink);
                 switch_theme = 1;
+
             } else {
                 setTheme(R.style.Theme_Lesson2);
                 switch_theme = 0;
@@ -66,11 +69,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString("out", out);
-        outState.putInt("Theme", switch_theme);
+        outState.putInt("theme", switch_theme);
     }
 
     @Override
@@ -101,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_equal = findViewById(R.id.btn_equal);
         btn_null = findViewById(R.id.btn_null);
         display = findViewById(R.id.txt_display);
-        btn_switch_theme = findViewById(R.id.btn_theme);
+        preferences = findViewById(R.id.btn_pref);
         layout = (ConstraintLayout) findViewById(R.id.layout);
         display.setText("");
     }
@@ -126,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_dot.setOnClickListener(this);
         btn_equal.setOnClickListener(this);
         btn_null.setOnClickListener(this);
-        btn_switch_theme.setOnClickListener(this);
+        preferences.setOnClickListener(this);
     }
 
     @Override
@@ -241,15 +245,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 operand = "";
                 switchNum = false;
                 break;
-            case R.id.btn_theme:
-                if (switch_theme == 0) {
-                    switch_theme = 1;
-                    layout.setBackgroundResource(R.drawable.background_pink);
-                } else {
-                    switch_theme = 0;
-                    layout.setBackgroundResource(R.drawable.back_light);
-                }
-                recreate();
+            case R.id.btn_pref:
+                Intent intent = new Intent(MainActivity.this, PreferencesActivity.class);
+                intent.putExtra("theme", switch_theme);
+                startActivityForResult(intent, 1);
                 break;
 
             case R.id.btn_equal:
@@ -265,6 +264,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         display.setText(out);
         if (isEqualPress) {
             display.setText(String.valueOf(outEqual));
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                switch_theme = data.getIntExtra("theme", 0);
+                recreate();
+
+            }
         }
     }
 
