@@ -34,14 +34,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initViews();
         initListeners();
+        chekBundle(savedInstanceState);
+        checkBackground();
+    }
+
+    private void chekBundle(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             out = savedInstanceState.getString("out");
             display.setText(out);
         }
-        checkBackgroun();
     }
 
-    private void checkBackgroun() {
+    private void checkBackground() {
         if (switch_theme == 1) {
             layout.setBackgroundResource(R.drawable.background_pink);
 
@@ -249,24 +253,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.btn_equal:
-                Calculator calculator = new Calculator(num1.toString(), num2.toString(), operand);
-                if (calculator.getOperation().equals("x")) {
-                    outEqual = calculator.mult();
-                    isEqualPress = true;
-                }
-                if (calculator.getOperation().equals("+")) {
-                    outEqual = calculator.sum();
-                    isEqualPress = true;
-                }
-                if (calculator.getOperation().equals("-")) {
-                    outEqual = calculator.sub();
-                    isEqualPress = true;
-                }
-                if (calculator.getOperation().equals("/")) {
-                    outEqual = calculator.div();
-                    isEqualPress = true;
-                }
-                switchNum = false;
+                operations();
                 break;
             default:
 
@@ -279,6 +266,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (isEqualPress) {
             display.setText(String.valueOf(outEqual));
         }
+    }
+
+    private void operations() {
+        Calculator calculator = new Calculator(num1.toString(), num2.toString(), operand);
+        if (calculator.getOperation().equals("x")) {
+            outEqual = calculator.mult();
+            isEqualPress = true;
+        }
+        if (calculator.getOperation().equals("+")) {
+            outEqual = calculator.sum();
+            isEqualPress = true;
+        }
+        if (calculator.getOperation().equals("-")) {
+            outEqual = calculator.sub();
+            isEqualPress = true;
+        }
+        if (calculator.getOperation().equals("/")) {
+            outEqual = calculator.div();
+            isEqualPress = true;
+        }
+        switchNum = false;
     }
 
 
