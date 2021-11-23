@@ -20,4 +20,5 @@
     <string name="text_equal">=</string>
     <string name="text_null">0</string>
     <string name="text_operations">12+15=27</string>
+    <string name="preferences">Preferences</string>
 </resources>
