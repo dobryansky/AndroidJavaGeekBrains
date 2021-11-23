@@ -27,16 +27,16 @@ public class DetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-
-
         return inflater.inflate(R.layout.fragment_details, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-       assert getArguments() != null;
-        int position = getArguments().getInt("position");
+        int position=0;
+        if (getArguments() != null) {
+             position = this.getArguments().getInt("position", 0);
+        }
         TextView noteDate = view.findViewById(R.id.noteDetailsDate);
         TextView noteName = view.findViewById(R.id.noteDetailsName);
         TextView noteDescription = view.findViewById(R.id.noteDetailsDescription);

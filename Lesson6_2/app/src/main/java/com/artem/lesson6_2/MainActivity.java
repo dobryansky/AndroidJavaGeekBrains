@@ -24,15 +24,15 @@ public class MainActivity extends AppCompatActivity {
                 DetailsFragment detailsFragment= new DetailsFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
-                        //.replace(R.id.list_container, listFragment,null)
-                        .replace(R.id.detail_container,detailsFragment,null)
+                        .add(R.id.list_container, listFragment,null)
+                        .add(R.id.detail_container,detailsFragment,null)
                         .addToBackStack(null)
                         .commit();
             } else {
                 ListFragment listFragment= new ListFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
-                        .replace(R.id.list_container, listFragment,null)
+                        .add(R.id.list_container, listFragment,null)
                         .addToBackStack(null)
                         .commit();
             }
