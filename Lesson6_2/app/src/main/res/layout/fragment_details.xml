@@ -16,20 +16,22 @@
         android:layout_gravity="center"
         tools:src="@tools:sample/avatars" />
     <TextView
+        android:layout_marginTop="20dp"
         android:id="@+id/noteDetailsDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:layout_gravity="center"
-        android:text="TextView"/>
+        tools:text="Дата"/>
 
     <TextView
         android:id="@+id/noteDetailsName"
-        android:textSize="20sp"
+        android:textSize="30sp"
+        android:layout_marginLeft="20dp"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        tools:text="Заметка"
        />
 
     <ScrollView
@@ -45,11 +47,19 @@
                 android:id="@+id/noteDetailsDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:text="TextView"
+                tools:text="Описание заметки"
                 android:textSize="18sp" />
         </LinearLayout>
     </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Edit note"
+        />
 
 
 

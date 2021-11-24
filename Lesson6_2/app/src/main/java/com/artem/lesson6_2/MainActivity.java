@@ -15,30 +15,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-            if (getResources().getConfiguration().orientation
-                    == Configuration.ORIENTATION_LANDSCAPE) {
-                ListFragment listFragment= new ListFragment();
-                DetailsFragment detailsFragment= new DetailsFragment();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.popBackStack();
-                fragmentManager.beginTransaction()
-                        .add(R.id.list_container, listFragment,null)
-                        .add(R.id.detail_container,detailsFragment,null)
-                        .addToBackStack(null)
-                        .commit();
-            } else {
-                ListFragment listFragment= new ListFragment();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.popBackStack();
-                fragmentManager.beginTransaction()
-                        .add(R.id.list_container, listFragment,null)
-                        .addToBackStack(null)
-                        .commit();
-            }
-
+        ListFragment listFragment = new ListFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.popBackStack();
+        fragmentManager.beginTransaction()
+                .add(R.id.list_container, listFragment, null)
+                .addToBackStack(null)
+                .commit();
 
 
     }

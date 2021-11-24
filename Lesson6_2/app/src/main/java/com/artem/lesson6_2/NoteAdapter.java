@@ -44,8 +44,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     @Override
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
         holder.noteName.setText(notes.get(position).getName());
-        Date dateNow = new Date();
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("E yyyy.MM.dd");
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("yy MMMM yyyy, H:m:ss");
         holder.noteDate.setText(formatForDateNow.format(notes.get(position).getDate()));
         holder.detailsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,17 +60,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     private void showFragment(View view, int position) {
         AppCompatActivity activity = (AppCompatActivity) view.getContext();
 
-        if (activity.getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_LANDSCAPE) {
-            Fragment detailFragment = new DetailsFragment();
-            Bundle bundle=new Bundle();
-            bundle.putInt("position", position);
-            detailFragment.setArguments(bundle);
-            activity.getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.detail_container,detailFragment)
-                    .addToBackStack(null)
-                    .commit();
-        } else {
             Fragment detailFragment = new DetailsFragment();
             Bundle bundle=new Bundle();
             bundle.putInt("position", position);
@@ -80,11 +68,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
                     .replace(R.id.list_container,detailFragment)
                     .addToBackStack(null)
                     .commit();
-
-        }
-
-
-
     }
 
 
