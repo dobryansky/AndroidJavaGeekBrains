@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 ListFragment listFragment= new ListFragment();
                 DetailsFragment detailsFragment= new DetailsFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.popBackStack();
                 fragmentManager.beginTransaction()
                         .add(R.id.list_container, listFragment,null)
                         .add(R.id.detail_container,detailsFragment,null)
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 ListFragment listFragment= new ListFragment();
                 FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.popBackStack();
                 fragmentManager.beginTransaction()
                         .add(R.id.list_container, listFragment,null)
                         .addToBackStack(null)
