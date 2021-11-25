@@ -5,13 +5,13 @@ import java.util.Date;
 public class Note {
     private String name;
     private String description;
-    private Date date;
+    private String date;
     int image;
 
 
 
 
-    public Note(String name, String description, Date date, int image) {
+    public Note(String name, String description, String date, int image) {
         this.name = name;
         this.description = description;
         this.date = date;
@@ -34,11 +34,11 @@ public class Note {
         this.description = description;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
