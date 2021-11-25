@@ -46,15 +46,16 @@ public class DetailsFragment extends Fragment {
     }
 
     private void initViews(@NonNull View view, int position) {
+
         FragmentManager fragmentManager = getParentFragmentManager();
         TextView noteDate = view.findViewById(R.id.noteDetailsDate);
         TextView noteName = view.findViewById(R.id.noteDetailsName);
         TextView noteDescription = view.findViewById(R.id.noteDetailsDescription);
         ImageView img = view.findViewById(R.id.imgDetails);
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("yy MMMM yyyy, H:m:ss");
-        noteDate.setText(formatForDateNow.format(ListFragment.notes.get(position).getDate()));
-        noteName.setText(ListFragment.notes.get(position).getName());
-        noteDescription.setText(ListFragment.notes.get(position).getDescription());
+        noteDate.setText(formatForDateNow.format(DataBaseNotes.notes.get(position).getDate()));
+        noteName.setText(DataBaseNotes.notes.get(position).getName());
+        noteDescription.setText(DataBaseNotes.notes.get(position).getDescription());
         img.setImageResource(ListFragment.images.get(position));
         MaterialButton btnEdit = view.findViewById(R.id.btn_edit);
         btnEdit.setOnClickListener(new View.OnClickListener() {

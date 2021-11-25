@@ -3,9 +3,9 @@ package com.artem.lesson6_2;
 import java.util.Date;
 
 public class Note {
-    String name;
-    String description;
-    Date date;
+    private String name;
+    private String description;
+    private Date date;
     int image;
 
 
