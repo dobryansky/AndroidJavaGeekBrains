@@ -1,0 +1,12 @@
+com/artem/lesson6/BuildConfig.java
+ com.artem.lesson6.BuildConfig
+com/artem/lesson6/Note.java
+ com.artem.lesson6.Note
+com/artem/lesson6/DatabaseNotes.java
+ com.artem.lesson6.DatabaseNotes
+com/artem/lesson6/NoteFragment.java
+ com.artem.lesson6.NoteFragment
+com/artem/lesson6/MainActivity.java
+ com.artem.lesson6.MainActivity
+com/artem/lesson6/DetailsFragment.java
+ com.artem.lesson6.DetailsFragment
