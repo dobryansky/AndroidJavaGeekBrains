@@ -47,7 +47,6 @@ public class EditFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("yy MMMM yyyy, H:m:ss");
         editNoteName = view.findViewById(R.id.edit_note_name);
         editDescription = view.findViewById(R.id.edit_note_description);
         editDate = view.findViewById(R.id.edit_date);
@@ -57,7 +56,7 @@ public class EditFragment extends Fragment {
 
         editNoteName.setText(database.getNotes().get(position).getName());
         editDescription.setText(database.getNotes().get(position).getDescription());
-        textDate.setText(formatForDateNow.format(database.getNotes().get(position).getDate()));
+        textDate.setText(database.getNotes().get(position).getDate());
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override

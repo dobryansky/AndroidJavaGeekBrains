@@ -41,8 +41,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
     @Override
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
         holder.noteName.setText(dataBase.getNotes().get(position).getName());
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("yy MMMM yyyy, H:m:ss");
-        holder.noteDate.setText(formatForDateNow.format(dataBase.getNotes().get(position).getDate()));
+        holder.noteDate.setText(dataBase.getNotes().get(position).getDate());
         holder.detailsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +53,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
     private void showFragment(View view, int position) {
         AppCompatActivity activity = (AppCompatActivity) view.getContext();
-
             Fragment detailFragment = new DetailsFragment();
             Bundle bundle=new Bundle();
             bundle.putInt("position", position);
@@ -74,7 +72,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
     public static class NoteViewHolder extends RecyclerView.ViewHolder  {
         TextView noteName,noteDate;
-
         CardView detailsLayout;
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);

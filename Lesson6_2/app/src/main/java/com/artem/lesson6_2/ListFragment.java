@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -25,7 +26,8 @@ public class ListFragment extends Fragment {
     RecyclerView recycleView;
     FloatingActionButton btnAdd;
     NoteAdapter adapter;
-
+    TextView textViewNonotes;
+    DataBaseNotes dataBase = DataBaseNotes.getInstanse();
 
     static ArrayList<Integer> images = new ArrayList<>(Arrays.asList(R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic3));
 
@@ -38,25 +40,34 @@ public class ListFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        DataBaseNotes dataBaseNotes= DataBaseNotes.getInstanse();
+        DataBaseNotes dataBaseNotes = DataBaseNotes.getInstanse();
         super.onViewCreated(view, savedInstanceState);
         recycleView = view.findViewById(R.id.recView);
-         adapter = new NoteAdapter(getContext(), dataBaseNotes, images);
+        adapter = new NoteAdapter(getContext(), dataBaseNotes, images);
+        textViewNonotes = view.findViewById(R.id.text_no_notes);
         recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+        if (MainActivity.needToUpdateRecView == 1) {
+            adapter.notifyDataSetChanged();
+        }
         recycleView.setAdapter(adapter);
-        btnAdd= view.findViewById(R.id.buttonAdd);
+
+        btnAdd = view.findViewById(R.id.buttonAdd);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment addNoteFragment =new AddNoteFragment();
-                FragmentManager fragmentManager= getParentFragmentManager();
+                Fragment addNoteFragment = new AddNoteFragment();
+                FragmentManager fragmentManager = getParentFragmentManager();
                 fragmentManager.beginTransaction()
-                        .replace(R.id.list_container,addNoteFragment)
+                        .replace(R.id.list_container, addNoteFragment)
                         .addToBackStack(null)
                         .commit();
             }
         });
-
+        if (dataBaseNotes.getNotes().size() == 0) {
+            textViewNonotes.setVisibility(View.VISIBLE);
+        } else {
+            textViewNonotes.setVisibility(View.GONE);
+        }
 
     }
 

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -39,28 +40,31 @@ public class AddNoteFragment extends Fragment {
         TextInputEditText addDescription = view.findViewById(R.id.add_note_description);
         DatePicker datePicker = view.findViewById(R.id.addDate);
         Button addButton = view.findViewById(R.id.btn_addNote);
+        Button backButton = view.findViewById(R.id.btn_back);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String newName=addName.getText().toString();
                 String newDescription=addDescription.getText().toString();
-                StringBuilder newDate= new StringBuilder();
-                addDescription.setText(newDate
-                        // Месяц отсчитывается с 0, поэтому добавляем 1
+                StringBuilder newDate= new StringBuilder()
                         .append(datePicker.getDayOfMonth()).append(".")
                         .append(datePicker.getMonth() + 1).append(".")
-                        .append(datePicker.getYear()));
+                        .append(datePicker.getYear());
 
+
+                MainActivity.needToUpdateRecView=1;
                 database.setNotes(new Note(newName,newDescription,newDate.toString(),R.drawable.pic1));
 
 
+            }
+        });
 
-
-
-
-
-
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.popBackStack();
             }
         });
     }

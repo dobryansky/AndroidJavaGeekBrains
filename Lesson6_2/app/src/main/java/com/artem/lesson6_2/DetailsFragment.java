@@ -24,13 +24,11 @@ import java.util.Date;
 
 
 public class DetailsFragment extends Fragment {
-
+    DataBaseNotes database= DataBaseNotes.getInstanse();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
         return inflater.inflate(R.layout.fragment_details, container, false);
     }
 
@@ -52,10 +50,9 @@ public class DetailsFragment extends Fragment {
         TextView noteName = view.findViewById(R.id.noteDetailsName);
         TextView noteDescription = view.findViewById(R.id.noteDetailsDescription);
         ImageView img = view.findViewById(R.id.imgDetails);
-        SimpleDateFormat formatForDateNow = new SimpleDateFormat("yy MMMM yyyy, H:m:ss");
-        noteDate.setText(formatForDateNow.format(DataBaseNotes.notes.get(position).getDate()));
-        noteName.setText(DataBaseNotes.notes.get(position).getName());
-        noteDescription.setText(DataBaseNotes.notes.get(position).getDescription());
+        noteDate.setText((database.notes.get(position).getDate()));
+        noteName.setText(database.notes.get(position).getName());
+        noteDescription.setText(database.notes.get(position).getDescription());
         img.setImageResource(ListFragment.images.get(position));
         MaterialButton btnEdit = view.findViewById(R.id.btn_edit);
         btnEdit.setOnClickListener(new View.OnClickListener() {
