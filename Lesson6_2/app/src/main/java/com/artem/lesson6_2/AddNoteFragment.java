@@ -26,7 +26,6 @@ import java.util.Calendar;
 public class AddNoteFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     DataBaseNotes database = DataBaseNotes.getInstanse();
-    RecyclerView recyclerView;
     TextView textDate;
 
     @Override

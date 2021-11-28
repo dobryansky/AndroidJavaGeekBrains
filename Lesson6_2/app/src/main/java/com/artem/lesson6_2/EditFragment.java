@@ -52,13 +52,17 @@ public class EditFragment extends Fragment implements DatePickerDialog.OnDateSet
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initViews(view);
+
+    }
+
+    private void initViews(@NonNull View view) {
         editNoteName = view.findViewById(R.id.edit_note_name);
         editDescription = view.findViewById(R.id.edit_note_description);
         editDate = view.findViewById(R.id.edit_date);
         textDate = view.findViewById(R.id.text_date);
         btnSave = view.findViewById(R.id.btn_save);
-        btnBack=view.findViewById(R.id.btn_back);
-
+        btnBack= view.findViewById(R.id.btn_back);
         editNoteName.setText(database.getNotes().get(position).getName());
         editDescription.setText(database.getNotes().get(position).getDescription());
         textDate.setText(database.getNotes().get(position).getDate());
@@ -76,7 +80,6 @@ public class EditFragment extends Fragment implements DatePickerDialog.OnDateSet
         });
 
 
-
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,20 +89,19 @@ public class EditFragment extends Fragment implements DatePickerDialog.OnDateSet
                 DataBaseNotes.notes.get(position).setDescription(newDescription);
                 DataBaseNotes.notes.get(position).setDate( textDate.getText().toString());
                 MainActivity.needToUpdateRecView=1;
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.popBackStack();
+                returnBack();
 
             }
+
+
         });
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.popBackStack();
+                returnBack();
             }
         });
-
     }
 
     @Override
@@ -111,5 +113,9 @@ public class EditFragment extends Fragment implements DatePickerDialog.OnDateSet
         String currentDateString = DateFormat.getDateInstance().format(calendar.getTime());
         textDate.setText(currentDateString);
 
+    }
+    private void returnBack() {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager.popBackStack();
     }
 }
