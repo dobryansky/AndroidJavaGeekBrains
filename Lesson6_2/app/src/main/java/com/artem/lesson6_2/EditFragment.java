@@ -1,10 +1,12 @@
 package com.artem.lesson6_2;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -13,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -20,10 +23,12 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import org.w3c.dom.Text;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 
-public class EditFragment extends Fragment {
+public class EditFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
     private Button btnSave, btnBack;
     private int position;
     private TextView editDate,textDate;
@@ -58,6 +63,20 @@ public class EditFragment extends Fragment {
         editDescription.setText(database.getNotes().get(position).getDescription());
         textDate.setText(database.getNotes().get(position).getDate());
 
+        editDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerFragment datePicker= new DatePickerFragment();
+                datePicker.setTargetFragment(EditFragment.this, 0);
+                datePicker.show(getParentFragmentManager(),"date picker");
+            }
+
+
+
+        });
+
+
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,6 +84,8 @@ public class EditFragment extends Fragment {
                 String newDescription=editDescription.getText().toString();
                 DataBaseNotes.notes.get(position).setName(newName);
                 DataBaseNotes.notes.get(position).setDescription(newDescription);
+                DataBaseNotes.notes.get(position).setDate( textDate.getText().toString());
+                MainActivity.needToUpdateRecView=1;
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.popBackStack();
 
@@ -78,6 +99,17 @@ public class EditFragment extends Fragment {
                 fragmentManager.popBackStack();
             }
         });
+
+    }
+
+    @Override
+    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+        Calendar calendar= Calendar.getInstance();
+        calendar.set (Calendar.YEAR,year);
+        calendar.set (Calendar.MONTH,month);
+        calendar.set (Calendar.DAY_OF_MONTH,day);
+        String currentDateString = DateFormat.getDateInstance().format(calendar.getTime());
+        textDate.setText(currentDateString);
 
     }
 }

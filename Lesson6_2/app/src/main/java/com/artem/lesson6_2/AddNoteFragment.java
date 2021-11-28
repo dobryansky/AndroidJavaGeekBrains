@@ -1,5 +1,6 @@
 package com.artem.lesson6_2;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,17 +14,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 
 
-public class AddNoteFragment extends Fragment {
+public class AddNoteFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     DataBaseNotes database = DataBaseNotes.getInstanse();
     RecyclerView recyclerView;
+    TextView textDate;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,25 +42,32 @@ public class AddNoteFragment extends Fragment {
 
         TextInputEditText addName = view.findViewById(R.id.add_note_name);
         TextInputEditText addDescription = view.findViewById(R.id.add_note_description);
-        DatePicker datePicker = view.findViewById(R.id.addDate);
         Button addButton = view.findViewById(R.id.btn_addNote);
         Button backButton = view.findViewById(R.id.btn_back);
+        TextView editDate= view.findViewById(R.id.edit_date_datePicker);
+         textDate= view.findViewById(R.id.text_add_date);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String newName=addName.getText().toString();
                 String newDescription=addDescription.getText().toString();
-                StringBuilder newDate= new StringBuilder()
-                        .append(datePicker.getDayOfMonth()).append(".")
-                        .append(datePicker.getMonth() + 1).append(".")
-                        .append(datePicker.getYear());
-
 
                 MainActivity.needToUpdateRecView=1;
-                database.setNotes(new Note(newName,newDescription,newDate.toString(),R.drawable.pic1));
+               database.setNotes(new Note(newName,newDescription,textDate.getText().toString(),R.drawable.pic1));
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.popBackStack();
 
 
+            }
+        });
+
+        editDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerFragment datePicker= new DatePickerFragment();
+                datePicker.setTargetFragment(AddNoteFragment.this, 0);
+                datePicker.show(getParentFragmentManager(),"date picker add");
             }
         });
 
@@ -70,4 +81,13 @@ public class AddNoteFragment extends Fragment {
     }
 
 
+    @Override
+    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+        Calendar calendar= Calendar.getInstance();
+        calendar.set (Calendar.YEAR,year);
+        calendar.set (Calendar.MONTH,month);
+        calendar.set (Calendar.DAY_OF_MONTH,day);
+        String currentDateString = DateFormat.getDateInstance().format(calendar.getTime());
+        textDate.setText(currentDateString);
+    }
 }

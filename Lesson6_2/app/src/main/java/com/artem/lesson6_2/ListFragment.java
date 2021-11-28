@@ -50,7 +50,6 @@ public class ListFragment extends Fragment {
             adapter.notifyDataSetChanged();
         }
         recycleView.setAdapter(adapter);
-
         btnAdd = view.findViewById(R.id.buttonAdd);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +58,7 @@ public class ListFragment extends Fragment {
                 FragmentManager fragmentManager = getParentFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.list_container, addNoteFragment)
-                        .addToBackStack(null)
+                        .addToBackStack("list notes")
                         .commit();
             }
         });

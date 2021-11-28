@@ -55,6 +55,7 @@ public class DetailsFragment extends Fragment {
         noteDescription.setText(database.notes.get(position).getDescription());
         img.setImageResource(ListFragment.images.get(position));
         MaterialButton btnEdit = view.findViewById(R.id.btn_edit);
+        MaterialButton btnDelete = view.findViewById(R.id.btn_delete_note);
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +67,15 @@ public class DetailsFragment extends Fragment {
                         .replace(R.id.list_container, editFragment)
                         .addToBackStack(null)
                         .commit();
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                database.getNotes().remove(position);
+                MainActivity.needToUpdateRecView=1;
+                fragmentManager.popBackStack();
             }
         });
     }
