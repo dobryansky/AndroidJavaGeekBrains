@@ -2,8 +2,11 @@ com/artem/lesson6/BuildConfig.java
  com.artem.lesson6.BuildConfig
 com/artem/lesson6/Note.java
  com.artem.lesson6.Note
+<<<<<<< Updated upstream
 com/artem/lesson6/DatabaseNotes.java
  com.artem.lesson6.DatabaseNotes
+=======
+>>>>>>> Stashed changes
 com/artem/lesson6/NoteFragment.java
  com.artem.lesson6.NoteFragment
 com/artem/lesson6/MainActivity.java

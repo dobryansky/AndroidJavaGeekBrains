@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< Updated upstream
+=======
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+>>>>>>> Stashed changes
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="b017a1f3-06f5-46fc-a3e3-dec1612bbca3" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/app/src/main/java/com/artem/lesson6/DatabaseNotes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/artem/lesson6/DetailsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/artem/lesson6/DetailsFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/artem/lesson6/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/artem/lesson6/MainActivity.java" afterDir="false" />
+=======
+    <list default="true" id="af244a25-fbf3-4a7e-9074-a23b52820864" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lesson6_2/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lesson6_2/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lesson6_2/app/src/main/java/com/artem/lesson6_2/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lesson6_2/app/src/main/java/com/artem/lesson6_2/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lesson6_2/app/src/main/java/com/artem/lesson6_2/NoteAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Lesson6_2/app/src/main/java/com/artem/lesson6_2/NoteAdapter.java" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< Updated upstream
   <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\ADobryanskii\.android\avd\Pixel_2_API_27.avd]" />
+=======
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Mikstrip\.android\avd\Pixel_2_API_27.avd]" />
+>>>>>>> Stashed changes
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -26,21 +46,37 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+<<<<<<< Updated upstream
+=======
+        <option value="layoutResourceFile" />
+>>>>>>> Stashed changes
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+<<<<<<< Updated upstream
   <component name="ProjectId" id="21GwQXyaAZwLdBrLZPsBaAh9Lg1" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+=======
+  <component name="ProjectId" id="21EqKfwuKyxFgPdDCVS8WfP08tJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+>>>>>>> Stashed changes
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+<<<<<<< Updated upstream
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+>>>>>>> Stashed changes
   </component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
@@ -105,6 +141,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< Updated upstream
       <changelist id="b017a1f3-06f5-46fc-a3e3-dec1612bbca3" name="Default Changelist" comment="" />
       <created>1637580716303</created>
       <option name="number" value="Default" />
@@ -125,4 +162,14 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+=======
+      <changelist id="af244a25-fbf3-4a7e-9074-a23b52820864" name="Default Changelist" comment="" />
+      <created>1637516535196</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1637516535196</updated>
+    </task>
+    <servers />
+  </component>
+>>>>>>> Stashed changes
 </project>

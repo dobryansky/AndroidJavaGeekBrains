@@ -1,9 +1,18 @@
+<<<<<<< Updated upstream
 #Mon Nov 22 16:06:16 MSK 2021
 base.2=D\:\\Study\\AndroidJavaGeekBrains\\Lesson6\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
 path.2=5/classes.dex
 base.1=D\:\\Study\\AndroidJavaGeekBrains\\Lesson6\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 path.1=0/classes.dex
 base.0=D\:\\Study\\AndroidJavaGeekBrains\\Lesson6\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+=======
+#Sun Nov 21 23:33:19 MSK 2021
+base.2=C\:\\Users\\Mikstrip\\Desktop\\Geekbrains\\AndroidJavaGeekBrains\\Lesson6\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\5\\classes.dex
+path.2=5/classes.dex
+base.1=C\:\\Users\\Mikstrip\\Desktop\\Geekbrains\\AndroidJavaGeekBrains\\Lesson6\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+path.1=0/classes.dex
+base.0=C\:\\Users\\Mikstrip\\Desktop\\Geekbrains\\AndroidJavaGeekBrains\\Lesson6\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+>>>>>>> Stashed changes
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex

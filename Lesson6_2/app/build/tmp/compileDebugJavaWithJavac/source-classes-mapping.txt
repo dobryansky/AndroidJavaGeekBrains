@@ -1,0 +1,32 @@
+com/artem/lesson6_2/Note.java
+ com.artem.lesson6_2.Note
+com/artem/lesson6_2/DataBaseNotes.java
+ com.artem.lesson6_2.DataBaseNotes
+com/artem/lesson6_2/BuildConfig.java
+ com.artem.lesson6_2.BuildConfig
+com/artem/lesson6_2/DatePickerFragment.java
+ com.artem.lesson6_2.DatePickerFragment
+com/artem/lesson6_2/ListFragment.java
+ com.artem.lesson6_2.ListFragment
+ com.artem.lesson6_2.ListFragment$1
+com/artem/lesson6_2/EditFragment.java
+ com.artem.lesson6_2.EditFragment
+ com.artem.lesson6_2.EditFragment$1
+ com.artem.lesson6_2.EditFragment$2
+ com.artem.lesson6_2.EditFragment$3
+com/artem/lesson6_2/NoteAdapter.java
+ com.artem.lesson6_2.NoteAdapter
+ com.artem.lesson6_2.NoteAdapter$1
+ com.artem.lesson6_2.NoteAdapter$NoteViewHolder
+com/artem/lesson6_2/DetailsFragment.java
+ com.artem.lesson6_2.DetailsFragment
+ com.artem.lesson6_2.DetailsFragment$1
+ com.artem.lesson6_2.DetailsFragment$2
+com/artem/lesson6_2/AddNoteFragment.java
+ com.artem.lesson6_2.AddNoteFragment
+ com.artem.lesson6_2.AddNoteFragment$1
+ com.artem.lesson6_2.AddNoteFragment$2
+ com.artem.lesson6_2.AddNoteFragment$3
+com/artem/lesson6_2/MainActivity.java
+ com.artem.lesson6_2.MainActivity
+ com.artem.lesson6_2.MainActivity$1
