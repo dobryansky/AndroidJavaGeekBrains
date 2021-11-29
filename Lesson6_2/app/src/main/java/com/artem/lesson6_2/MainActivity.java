@@ -46,7 +46,6 @@ BottomNavigationView bottomNavigationView;
 
 
                     case (R.id.list_notes_done):
-                        // Respond to navigation item 2 click
                         fragmentManager.beginTransaction()
                                 .replace(R.id.list_container, new DoneNotesFragment(), null)
                                 .addToBackStack(null)
@@ -54,7 +53,6 @@ BottomNavigationView bottomNavigationView;
                         return true;
 
                     case (R.id.app_about):
-                        // Respond to navigation item 2 click
                         fragmentManager.beginTransaction()
                                 .replace(R.id.list_container, new AboutFragment(), null)
                                 .addToBackStack(null)

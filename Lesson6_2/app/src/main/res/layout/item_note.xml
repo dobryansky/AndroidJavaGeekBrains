@@ -72,7 +72,7 @@
                 app:layout_constraintGuide_percent="0.85" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imageView_item"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 app:layout_constraintBottom_toBottomOf="parent"

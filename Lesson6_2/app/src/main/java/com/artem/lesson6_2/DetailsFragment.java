@@ -53,7 +53,7 @@ public class DetailsFragment extends Fragment {
         noteDate.setText((database.notes.get(position).getDate()));
         noteName.setText(database.notes.get(position).getName());
         noteDescription.setText(database.notes.get(position).getDescription());
-        img.setImageResource(ListFragment.images.get(position));
+        img.setImageDrawable(database.notes.get(position).getImage().getDrawable());
         MaterialButton btnEdit = view.findViewById(R.id.btn_edit);
         MaterialButton btnDelete = view.findViewById(R.id.btn_delete_note);
         btnEdit.setOnClickListener(new View.OnClickListener() {

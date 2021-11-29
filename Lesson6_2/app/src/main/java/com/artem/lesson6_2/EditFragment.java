@@ -75,8 +75,6 @@ public class EditFragment extends Fragment implements DatePickerDialog.OnDateSet
                 datePicker.show(getParentFragmentManager(),"date picker");
             }
 
-
-
         });
 
 

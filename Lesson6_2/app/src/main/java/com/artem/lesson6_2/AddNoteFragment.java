@@ -14,9 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.DateFormat;
@@ -43,17 +46,23 @@ public class AddNoteFragment extends Fragment implements DatePickerDialog.OnDate
         TextInputEditText addDescription = view.findViewById(R.id.add_note_description);
         Button addButton = view.findViewById(R.id.btn_addNote);
         Button backButton = view.findViewById(R.id.btn_back);
-        TextView editDate= view.findViewById(R.id.edit_date_datePicker);
-         textDate= view.findViewById(R.id.text_add_date);
+        TextView editDate = view.findViewById(R.id.edit_date_datePicker);
+        ImageView imageView = view.findViewById(R.id.image_add_note);
+        Glide.with(getContext())
+                .load("https://picsum.photos/100")
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(imageView);
+        textDate = view.findViewById(R.id.text_add_date);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newName=addName.getText().toString();
-                String newDescription=addDescription.getText().toString();
+                String newName = addName.getText().toString();
+                String newDescription = addDescription.getText().toString();
 
-                MainActivity.needToUpdateRecView=1;
-               database.setNotes(new Note(newName,newDescription,textDate.getText().toString(),R.drawable.pic1));
+                MainActivity.needToUpdateRecView = 1;
+                database.setNotes(new Note(newName, newDescription, textDate.getText().toString(), imageView));
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.popBackStack();
 
@@ -64,9 +73,9 @@ public class AddNoteFragment extends Fragment implements DatePickerDialog.OnDate
         editDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatePickerFragment datePicker= new DatePickerFragment();
+                DatePickerFragment datePicker = new DatePickerFragment();
                 datePicker.setTargetFragment(AddNoteFragment.this, 0);
-                datePicker.show(getParentFragmentManager(),"date picker add");
+                datePicker.show(getParentFragmentManager(), "date picker add");
             }
         });
 
@@ -82,10 +91,10 @@ public class AddNoteFragment extends Fragment implements DatePickerDialog.OnDate
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-        Calendar calendar= Calendar.getInstance();
-        calendar.set (Calendar.YEAR,year);
-        calendar.set (Calendar.MONTH,month);
-        calendar.set (Calendar.DAY_OF_MONTH,day);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, day);
         String currentDateString = DateFormat.getDateInstance().format(calendar.getTime());
         textDate.setText(currentDateString);
     }
