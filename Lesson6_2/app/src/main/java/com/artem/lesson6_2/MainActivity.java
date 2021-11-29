@@ -2,11 +2,10 @@ package com.artem.lesson6_2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+
 import androidx.fragment.app.FragmentManager;
 
-import android.app.Activity;
-import android.content.res.Configuration;
+
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -23,21 +22,54 @@ BottomNavigationView bottomNavigationView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bottomNavigationView= findViewById(R.id.bottom_navigation);
         inflateListFragment();
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                return false;
-            }
-        });
-
+        menuSelect();
 
 
     }
 
+    private void menuSelect() {
+        bottomNavigationView= findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+
+                switch (item.getItemId()) {
+                    case (R.id.list_notes):
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.list_container, new ListFragment(), null)
+                                .addToBackStack(null)
+                                .commit();
+
+                        return true;
 
 
+                    case (R.id.list_notes_done):
+                        // Respond to navigation item 2 click
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.list_container, new DoneNotesFragment(), null)
+                                .addToBackStack(null)
+                                .commit();
+                        return true;
+
+                    case (R.id.app_about):
+                        // Respond to navigation item 2 click
+                        fragmentManager.beginTransaction()
+                                .replace(R.id.list_container, new AboutFragment(), null)
+                                .addToBackStack(null)
+                                .commit();
+                        return true;
+
+
+                    default:
+                        return false;
+
+                }
+            }
+
+        });
+    }
     private void inflateListFragment() {
         ListFragment listFragment = new ListFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
