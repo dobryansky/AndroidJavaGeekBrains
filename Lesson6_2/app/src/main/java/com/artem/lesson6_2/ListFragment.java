@@ -29,7 +29,6 @@ public class ListFragment extends Fragment {
     TextView textViewNonotes;
     DataBaseNotes dataBase = DataBaseNotes.getInstanse();
 
-    static ArrayList<Integer> images = new ArrayList<>(Arrays.asList(R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic3));
 
 
     @Override
@@ -43,7 +42,7 @@ public class ListFragment extends Fragment {
         DataBaseNotes dataBaseNotes = DataBaseNotes.getInstanse();
         super.onViewCreated(view, savedInstanceState);
         recycleView = view.findViewById(R.id.recView);
-        adapter = new NoteAdapter(getContext(), dataBaseNotes, images);
+        adapter = new NoteAdapter(getContext(), dataBaseNotes);
         textViewNonotes = view.findViewById(R.id.text_no_notes);
         recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         if (MainActivity.needToUpdateRecView == 1) {

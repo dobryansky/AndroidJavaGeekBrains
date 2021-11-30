@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.DateFormat;
@@ -52,6 +54,7 @@ public class AddNoteFragment extends Fragment implements DatePickerDialog.OnDate
                 .load("https://picsum.photos/100")
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
+                .apply(RequestOptions.bitmapTransform(new RoundedCorners(20)))
                 .into(imageView);
         textDate = view.findViewById(R.id.text_add_date);
 
@@ -60,13 +63,10 @@ public class AddNoteFragment extends Fragment implements DatePickerDialog.OnDate
             public void onClick(View view) {
                 String newName = addName.getText().toString();
                 String newDescription = addDescription.getText().toString();
-
                 MainActivity.needToUpdateRecView = 1;
-                database.setNotes(new Note(newName, newDescription, textDate.getText().toString(), imageView));
+                database.setNotes(new Note(newName, newDescription, textDate.getText().toString(), imageView,false));
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.popBackStack();
-
-
             }
         });
 

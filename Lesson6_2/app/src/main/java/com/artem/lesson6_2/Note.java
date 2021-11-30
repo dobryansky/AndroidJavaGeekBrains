@@ -8,16 +8,17 @@ public class Note {
     private String name;
     private String description;
     private String date;
-    ImageView imageView;
+    private ImageView imageView;
+    private Boolean doneState;
 
 
 
-
-    public Note(String name, String description, String date, ImageView imageView) {
+    public Note(String name, String description, String date, ImageView imageView,Boolean doneState ) {
         this.name = name;
         this.description = description;
         this.date = date;
         this.imageView = imageView;
+        this.doneState = doneState;
     }
 
     public String getName() {
@@ -50,5 +51,13 @@ public class Note {
 
     public void setImage(ImageView imageView) {
         this.imageView = imageView;
+    }
+
+    public Boolean getDoneState() {
+        return doneState;
+    }
+
+    public void setDoneState(Boolean doneState) {
+        this.doneState = doneState;
     }
 }
