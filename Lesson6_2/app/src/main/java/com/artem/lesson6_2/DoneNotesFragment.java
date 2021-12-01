@@ -13,16 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.ArrayList;
 
 
 public class DoneNotesFragment extends Fragment {
 
-    RecyclerView recycleView;
+    RecyclerView recycleViewDone;
     ArrayList<Note> doneNote= new ArrayList<Note>();
-    NoteAdapter adapter;
+    NoteDoneAdapter adapter;
     TextView textViewNonotes;
     DataBaseNotes dataBase = DataBaseNotes.getInstanse();
 
@@ -38,15 +36,16 @@ public class DoneNotesFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         doneNote=getDoneNotes(dataBase);
-        recycleView = view.findViewById(R.id.recViewDone);
-        adapter = new NoteAdapter(getContext(), doneNote);
+        recycleViewDone = view.findViewById(R.id.recViewDone);
+        adapter = new NoteDoneAdapter(getContext(), doneNote);
         textViewNonotes = view.findViewById(R.id.text_no_done);
-        recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
-        if (MainActivity.needToUpdateRecView == 1) {
+        recycleViewDone.setLayoutManager(new LinearLayoutManager(getContext()));
+       /* if (MainActivity.needToUpdateRecView == 1) {
             adapter.notifyDataSetChanged();
-        }
-        recycleView.setAdapter(adapter);
-        if (dataBase.getNotes().size() == 0) {
+        }*/
+        recycleViewDone.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        if (doneNote.size() == 0) {
             textViewNonotes.setVisibility(View.VISIBLE);
         } else {
             textViewNonotes.setVisibility(View.GONE);

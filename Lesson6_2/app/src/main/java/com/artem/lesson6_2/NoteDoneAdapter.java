@@ -1,6 +1,7 @@
 package com.artem.lesson6_2;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,20 +17,14 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder> {
+public class NoteDoneAdapter extends RecyclerView.Adapter<NoteDoneAdapter.NoteViewHolder> {
     ArrayList<Note> notes;
-    DataBaseNotes dataBase = DataBaseNotes.getInstanse();
     Context context;
 
-    public NoteAdapter(Context context, DataBaseNotes dataBaseNotes) {
-        this.dataBase = dataBaseNotes;
-        this.context = context;
-    }
 
-    public NoteAdapter(Context context, ArrayList<Note> notes) {
+    public NoteDoneAdapter(Context context, ArrayList<Note> notes) {
         this.notes = notes;
         this.context = context;
     }
@@ -45,22 +40,23 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
-        holder.noteName.setText(dataBase.getNotes().get(position).getName());
-        holder.noteDate.setText(dataBase.getNotes().get(position).getDate());
-        holder.noteImage.setImageDrawable(dataBase.getNotes().get(position).getImage().getDrawable());
-        holder.doneState.setChecked(dataBase.getNotes().get(position).getDoneState());
-       holder.doneState.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-           @Override
-           public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-             if( holder.doneState.isChecked()){
-                 dataBase.getNotes().get(holder.getAdapterPosition()).setDoneState(true);
-             } else {
-                 dataBase.getNotes().get(holder.getAdapterPosition()).setDoneState(false);
-             }
+        holder.noteName.setText(notes.get(position).getName());
+        holder.noteDate.setText(notes.get(position).getDate());
+        holder.noteImage.setImageDrawable(notes.get(position).getImage().getDrawable());
+        holder.doneState.setChecked(notes.get(position).getDoneState());
+        holder.detailsLayout.setBackground(context.getDrawable(R.drawable.outline_shape_green));
+        holder.doneState.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (holder.doneState.isChecked()) {
+                    notes.get(holder.getAdapterPosition()).setDoneState(true);
+                } else {
+                    notes.get(holder.getAdapterPosition()).setDoneState(false);
+                }
 
 
-           }
-       });
+            }
+        });
         holder.detailsLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,8 +81,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
 
     @Override
     public int getItemCount() {
-        DataBaseNotes dataBaseNotes = DataBaseNotes.getInstanse();
-        return dataBaseNotes.getNotes().size();
+        return notes.size();
     }
 
     public static class NoteViewHolder extends RecyclerView.ViewHolder {
