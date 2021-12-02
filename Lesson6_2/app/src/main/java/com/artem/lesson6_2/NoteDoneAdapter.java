@@ -53,8 +53,6 @@ public class NoteDoneAdapter extends RecyclerView.Adapter<NoteDoneAdapter.NoteVi
                 } else {
                     notes.get(holder.getAdapterPosition()).setDoneState(false);
                 }
-
-
             }
         });
         holder.detailsLayout.setOnClickListener(new View.OnClickListener() {
