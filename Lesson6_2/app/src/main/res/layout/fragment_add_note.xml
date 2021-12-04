@@ -88,7 +88,7 @@
             android:id="@+id/text_add_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="дата"
+            android:text="дата"
             android:inputType="date"
             android:textSize="20sp" />
 

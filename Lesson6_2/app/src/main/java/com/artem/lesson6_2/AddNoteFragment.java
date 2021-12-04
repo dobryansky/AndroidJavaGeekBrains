@@ -1,14 +1,18 @@
 package com.artem.lesson6_2;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
+import android.location.GnssAntennaInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,11 +67,17 @@ public class AddNoteFragment extends Fragment implements DatePickerDialog.OnDate
             public void onClick(View view) {
                 String newName = addName.getText().toString();
                 String newDescription = addDescription.getText().toString();
-                MainActivity.needToUpdateRecView = 1;
-                database.setNotes(new Note(newName, newDescription, textDate.getText().toString(), imageView,false));
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.popBackStack();
+                String newDate = textDate.getText().toString();
+
+                if (checkFields(newName, newDescription, newDate)) {
+                    database.setNotes(new Note(newName, newDescription, newDate, imageView, false));
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    fragmentManager.popBackStack();
+                    MainActivity.needToUpdateRecView = 1;
+                }
             }
+
+
         });
 
         editDate.setOnClickListener(new View.OnClickListener() {
@@ -98,4 +108,36 @@ public class AddNoteFragment extends Fragment implements DatePickerDialog.OnDate
         String currentDateString = DateFormat.getDateInstance().format(calendar.getTime());
         textDate.setText(currentDateString);
     }
+
+    private boolean checkFields(String newName, String newDescription, String newDate) {
+        if (newName.equals("") || newDescription.equals("") || newDate.equals("дата")) {
+            showAlertDialog();
+            return false;
+        }
+        return true;
+    }
+
+    private void showAlertDialog() {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("ВНИМАНИЕ!")
+                .setMessage("ЗАПОЛНИ ВСЕ ПОЛЯ!!!")
+                // Можно указать и пиктограмму
+                //.setIcon(R.mipmap.ic_launcher_round)
+                // Из этого окна нельзя выйти кнопкой Back
+                .setCancelable(false)
+                .setPositiveButton("ОК", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .setNegativeButton("ОК", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .show();
+    }
+
 }
