@@ -1,7 +1,6 @@
 package com.artem.lesson6_2;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;

@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,10 +42,16 @@ public class ListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         DataBaseNotes dataBaseNotes = DataBaseNotes.getInstanse();
         super.onViewCreated(view, savedInstanceState);
+        initRecycleView(view, dataBaseNotes);
+
+    }
+
+    private void initRecycleView(@NonNull View view, DataBaseNotes dataBaseNotes) {
         recycleView = view.findViewById(R.id.recView);
         adapter = new NoteAdapter(getContext(), dataBaseNotes);
         textViewNonotes = view.findViewById(R.id.text_no_notes);
         recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+        new ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(recycleView);
         if (MainActivity.needToUpdateRecView == 1) {
             adapter.notifyDataSetChanged();
         }
@@ -66,7 +73,6 @@ public class ListFragment extends Fragment {
         } else {
             textViewNonotes.setVisibility(View.GONE);
         }
-
     }
 
     @Override
@@ -74,4 +80,18 @@ public class ListFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
+
+    ItemTouchHelper.SimpleCallback itemTouchHelperCallBack = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT|ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            dataBase.getNotes().remove(viewHolder.getAdapterPosition());
+            adapter.notifyDataSetChanged();
+
+        }
+    };
 }
