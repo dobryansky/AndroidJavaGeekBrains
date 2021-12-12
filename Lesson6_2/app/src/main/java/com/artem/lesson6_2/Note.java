@@ -1,21 +1,24 @@
 package com.artem.lesson6_2;
 
+import android.widget.ImageView;
+
 import java.util.Date;
 
 public class Note {
-    String name;
-    String description;
-    Date date;
-    int image;
+    private String name;
+    private String description;
+    private String date;
+    private ImageView imageView;
+    private Boolean doneState;
 
 
 
-
-    public Note(String name, String description, Date date, int image) {
+    public Note(String name, String description, String date, ImageView imageView,Boolean doneState ) {
         this.name = name;
         this.description = description;
         this.date = date;
-        this.image = image;
+        this.imageView = imageView;
+        this.doneState = doneState;
     }
 
     public String getName() {
@@ -34,19 +37,27 @@ public class Note {
         this.description = description;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public int getImage() {
-        return image;
+    public ImageView getImage() {
+        return imageView;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setImage(ImageView imageView) {
+        this.imageView = imageView;
+    }
+
+    public Boolean getDoneState() {
+        return doneState;
+    }
+
+    public void setDoneState(Boolean doneState) {
+        this.doneState = doneState;
     }
 }

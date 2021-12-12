@@ -5,12 +5,17 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,12 +25,11 @@ import java.util.Date;
 public class ListFragment extends Fragment {
 
     RecyclerView recycleView;
-    static ArrayList<Note> notes = new ArrayList<>(Arrays.asList(new Note("скачать", "В панели инструментов «Разметка» коснитесь инструмента «Лассо»  (он находится между ластиком и линейкой)", new Date(), 5),
-            new Note("загрузить", "Коснитесь рисунка или рукописного текста и удерживайте, чтобы выбрать его, затем расширьте область выбора перетягиванием.", new Date(), 5),
-            new Note("выгрузить", "При необходимости скорректируйте область выбора, перетянув манипуляторы.", new Date(), 5)));
+    FloatingActionButton btnAdd;
+    NoteAdapter adapter;
+    TextView textViewNonotes;
+    DataBaseNotes dataBase = DataBaseNotes.getInstanse();
 
-
-    static ArrayList<Integer> images = new ArrayList<>(Arrays.asList(R.drawable.pic1, R.drawable.pic2, R.drawable.pic3));
 
 
     @Override
@@ -36,12 +40,39 @@ public class ListFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        DataBaseNotes dataBaseNotes = DataBaseNotes.getInstanse();
         super.onViewCreated(view, savedInstanceState);
-        recycleView = view.findViewById(R.id.recView);
-        NoteAdapter adapter = new NoteAdapter(getContext(), notes, images);
-        recycleView.setAdapter(adapter);
-        recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+        initRecycleView(view, dataBaseNotes);
 
+    }
+
+    private void initRecycleView(@NonNull View view, DataBaseNotes dataBaseNotes) {
+        recycleView = view.findViewById(R.id.recView);
+        adapter = new NoteAdapter(getContext(), dataBaseNotes);
+        textViewNonotes = view.findViewById(R.id.text_no_notes);
+        recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+        new ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(recycleView);
+        if (MainActivity.needToUpdateRecView == 1) {
+            adapter.notifyDataSetChanged();
+        }
+        recycleView.setAdapter(adapter);
+        btnAdd = view.findViewById(R.id.buttonAdd);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment addNoteFragment = new AddNoteFragment();
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.list_container, addNoteFragment)
+                        .addToBackStack("list notes")
+                        .commit();
+            }
+        });
+        if (dataBaseNotes.getNotes().size() == 0) {
+            textViewNonotes.setVisibility(View.VISIBLE);
+        } else {
+            textViewNonotes.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -49,4 +80,18 @@ public class ListFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
+
+    ItemTouchHelper.SimpleCallback itemTouchHelperCallBack = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT|ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            dataBase.getNotes().remove(viewHolder.getAdapterPosition());
+            adapter.notifyDataSetChanged();
+
+        }
+    };
 }
