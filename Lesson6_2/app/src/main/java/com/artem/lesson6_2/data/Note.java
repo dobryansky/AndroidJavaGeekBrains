@@ -1,4 +1,4 @@
-package com.artem.lesson6_2;
+package com.artem.lesson6_2.data;
 
 import android.widget.ImageView;
 

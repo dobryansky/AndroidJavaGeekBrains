@@ -14,6 +14,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.artem.lesson6_2.pages.AboutFragment;
+import com.artem.lesson6_2.pages.DoneNotesFragment;
+import com.artem.lesson6_2.pages.ListFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
@@ -23,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     BottomNavigationView bottomNavigationView;
     NavigationView navigationView;
     DrawerLayout drawer;
-    static int needToUpdateRecView = 0;
+    public static int needToUpdateRecView = 0;
 
 
     @Override

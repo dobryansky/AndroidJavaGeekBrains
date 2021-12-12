@@ -1,4 +1,4 @@
-package com.artem.lesson6_2;
+package com.artem.lesson6_2.adapters;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,6 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.artem.lesson6_2.data.Note;
+import com.artem.lesson6_2.R;
+import com.artem.lesson6_2.pages.DetailsFragment;
 
 import java.util.ArrayList;
 

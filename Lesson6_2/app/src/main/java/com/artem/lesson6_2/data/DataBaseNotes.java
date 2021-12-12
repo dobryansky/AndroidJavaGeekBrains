@@ -1,8 +1,7 @@
-package com.artem.lesson6_2;
+package com.artem.lesson6_2.data;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 
 public final  class DataBaseNotes {
     private static DataBaseNotes instance;

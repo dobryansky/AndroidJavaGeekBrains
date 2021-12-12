@@ -1,8 +1,7 @@
-package com.artem.lesson6_2;
+package com.artem.lesson6_2.pages;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
-import android.location.GnssAntennaInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,9 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +17,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.artem.lesson6_2.data.DataBaseNotes;
+import com.artem.lesson6_2.MainActivity;
+import com.artem.lesson6_2.data.Note;
+import com.artem.lesson6_2.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -131,12 +131,7 @@ public class AddNoteFragment extends Fragment implements DatePickerDialog.OnDate
 
                     }
                 })
-                .setNegativeButton("ОК", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
 
-                    }
-                })
                 .show();
     }
 

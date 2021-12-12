@@ -1,4 +1,4 @@
-package com.artem.lesson6_2;
+package com.artem.lesson6_2.adapters;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,10 +16,14 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.SimpleDateFormat;
+import com.artem.lesson6_2.data.DataBaseNotes;
+import com.artem.lesson6_2.pages.DetailsFragment;
+import com.artem.lesson6_2.data.Note;
+import com.artem.lesson6_2.R;
+
 import java.util.ArrayList;
 
-public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder> {
+public class NoteAdapter extends RecyclerView.Adapter<NoteViewHolder> {
     ArrayList<Note> notes;
     DataBaseNotes dataBase = DataBaseNotes.getInstanse();
     Context context;
@@ -89,24 +93,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         return dataBaseNotes.getNotes().size();
     }
 
-    public static class NoteViewHolder extends RecyclerView.ViewHolder {
-        TextView noteName, noteDate;
-        ImageView noteImage;
-        CardView detailsLayout;
-        CheckBox doneState;
 
-        public NoteViewHolder(@NonNull View itemView) {
-            super(itemView);
-            noteName = itemView.findViewById(R.id.noteName);
-            noteDate = itemView.findViewById(R.id.noteDate);
-            noteImage = itemView.findViewById(R.id.imageView_item);
-            detailsLayout = itemView.findViewById(R.id.details_layout);
-            doneState = itemView.findViewById(R.id.note_checkbox);
-
-        }
-
-
-    }
 
 
 }
