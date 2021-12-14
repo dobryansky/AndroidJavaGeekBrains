@@ -1,4 +1,4 @@
-package com.artem.lesson6_2;
+package com.artem.lesson6_2.pages;
 
 import android.os.Bundle;
 
@@ -12,6 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.artem.lesson6_2.data.DataBaseNotes;
+import com.artem.lesson6_2.data.Note;
+import com.artem.lesson6_2.adapters.NoteDoneAdapter;
+import com.artem.lesson6_2.R;
 
 import java.util.ArrayList;
 

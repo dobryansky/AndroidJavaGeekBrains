@@ -1,8 +1,7 @@
-package com.artem.lesson6_2;
+package com.artem.lesson6_2.pages;
 
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
-import android.location.GnssAntennaInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,9 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,13 +17,19 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.artem.lesson6_2.data.DataBaseNotes;
+import com.artem.lesson6_2.MainActivity;
+import com.artem.lesson6_2.data.Note;
+import com.artem.lesson6_2.R;
+import com.artem.lesson6_2.data.NoteFireBase;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -35,6 +38,8 @@ import java.util.Calendar;
 public class AddNoteFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     DataBaseNotes database = DataBaseNotes.getInstanse();
+    private DatabaseReference mDataBase;
+    private String NOTE_DATABASE="NOTE_DATABASE";
     TextView textDate;
 
     @Override
@@ -54,6 +59,7 @@ public class AddNoteFragment extends Fragment implements DatePickerDialog.OnDate
         Button backButton = view.findViewById(R.id.btn_back);
         TextView editDate = view.findViewById(R.id.edit_date_datePicker);
         ImageView imageView = view.findViewById(R.id.image_add_note);
+        mDataBase= FirebaseDatabase.getInstance().getReference(NOTE_DATABASE);
         Glide.with(getContext())
                 .load("https://picsum.photos/100")
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -74,6 +80,10 @@ public class AddNoteFragment extends Fragment implements DatePickerDialog.OnDate
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                     fragmentManager.popBackStack();
                     MainActivity.needToUpdateRecView = 1;
+                    NoteFireBase newNote= new NoteFireBase(newName, newDescription, newDate, imageView.toString(), false);
+                    mDataBase.child("chapter 1").setValue(newNote);
+                    //mDataBase.child("NOTE_DATABASE").child("MqiRel7_Z04r82T_CZ5").child("date").setValue("777777");
+
                 }
             }
 
@@ -131,12 +141,7 @@ public class AddNoteFragment extends Fragment implements DatePickerDialog.OnDate
 
                     }
                 })
-                .setNegativeButton("ОК", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
 
-                    }
-                })
                 .show();
     }
 

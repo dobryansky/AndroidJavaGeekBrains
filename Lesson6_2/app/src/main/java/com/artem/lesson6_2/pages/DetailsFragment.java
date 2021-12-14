@@ -1,13 +1,11 @@
-package com.artem.lesson6_2;
+package com.artem.lesson6_2.pages;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.artem.lesson6_2.data.DataBaseNotes;
+import com.artem.lesson6_2.MainActivity;
+import com.artem.lesson6_2.R;
 import com.google.android.material.button.MaterialButton;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 
 
 public class DetailsFragment extends Fragment {

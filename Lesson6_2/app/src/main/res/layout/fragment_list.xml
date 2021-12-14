@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListFragment">
+    tools:context=".pages.ListFragment">
 
 
     <TextView
@@ -13,7 +13,7 @@
         android:textColor="@color/black"
         android:layout_gravity="center_horizontal|top"
         android:textSize="30sp"
-        android:text="Заметок ещё нет:((( Добавьте заметки"/>
+        android:text="Заметок ещё нет:((( \n Добавьте заметки"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recView"

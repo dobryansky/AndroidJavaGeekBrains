@@ -1,4 +1,4 @@
-package com.artem.lesson6_2;
+package com.artem.lesson6_2.pages;
 
 import android.os.Bundle;
 
@@ -15,11 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.artem.lesson6_2.data.DataBaseNotes;
+import com.artem.lesson6_2.MainActivity;
+import com.artem.lesson6_2.adapters.NoteAdapter;
+import com.artem.lesson6_2.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 
 
 public class ListFragment extends Fragment {

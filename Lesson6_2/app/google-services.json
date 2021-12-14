@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "992338476326",
+    "firebase_url": "https://notes-5f241-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "notes-5f241",
+    "storage_bucket": "notes-5f241.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992338476326:android:2736e156767ee182f555e7",
+        "android_client_info": {
+          "package_name": "com.artem.lesson6_2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "992338476326-k7svt1ra00r7jptnvm96mu2k0s7gitpo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqIZ6pZo7Eigi3pOMY-zbPvEUmaao0Ad8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "992338476326-k7svt1ra00r7jptnvm96mu2k0s7gitpo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

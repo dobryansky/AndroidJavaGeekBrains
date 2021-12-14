@@ -1,19 +1,15 @@
-package com.artem.lesson6_2;
+package com.artem.lesson6_2.data;
 
 import android.widget.ImageView;
 
-import java.util.Date;
-
-public class Note {
+public class NoteFireBase {
     private String name;
     private String description;
     private String date;
-    private ImageView imageView;
+    private String imageView;
     private Boolean doneState;
 
-
-
-    public Note(String name, String description, String date, ImageView imageView,Boolean doneState ) {
+    public NoteFireBase(String name, String description, String date, String imageView, Boolean doneState) {
         this.name = name;
         this.description = description;
         this.date = date;
@@ -45,11 +41,11 @@ public class Note {
         this.date = date;
     }
 
-    public ImageView getImage() {
+    public String getImageView() {
         return imageView;
     }
 
-    public void setImage(ImageView imageView) {
+    public void setImageView(String imageView) {
         this.imageView = imageView;
     }
 
